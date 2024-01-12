@@ -1,21 +1,20 @@
 #!/usr/bin/python3
-"""import model"""
-from collections import deque
 
 
 def canUnlockAll(boxes):
     """function determines if all the boxes can be opened."""
     n = len(boxes)
     visited = set()
-    queue = deque([0])
 
-    while queue:
-        current_box = queue.popleft()
+    def dfs(box_index):
+        if box_index in visited or box_index >= n or box_index < 0:
+            return
 
-        if current_box in visited:
-            continue
+        visited.add(box_index)
 
-        visited.add(current_box)
-        queue.extend(boxes[current_box])
+        for key in boxes[box_index]:
+            dfs(key)
 
+    dfs(0)
+    """return len visited"""
     return len(visited) == n

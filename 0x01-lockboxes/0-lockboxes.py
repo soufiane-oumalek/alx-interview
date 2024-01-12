@@ -1,15 +1,17 @@
+from collections import deque
+
 def canUnlockAll(boxes):
     n = len(boxes)
     visited = set()
+    queue = deque([0])
 
-    def dfs(box_index):
-        if box_index in visited or box_index >= n or box_index < 0:
-            return
+    while queue:
+        current_box = queue.popleft()
 
-        visited.add(box_index)
+        if current_box in visited:
+            continue
 
-        for key in boxes[box_index]:
-            dfs(key)
+        visited.add(current_box)
+        queue.extend(boxes[current_box])
 
-    dfs(0)
     return len(visited) == n

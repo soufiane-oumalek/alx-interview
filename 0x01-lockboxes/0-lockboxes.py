@@ -1,8 +1,10 @@
 #!/usr/bin/python3
+"""import model"""
 from collections import deque
 
 
 def canUnlockAll(boxes):
+    """function determines if all the boxes can be opened."""
     n = len(boxes)
     visited = set()
     queue = deque([0])

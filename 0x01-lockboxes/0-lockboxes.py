@@ -16,5 +16,5 @@ def canUnlockAll(boxes):
 
         visited.add(current_box)
         queue.extend(boxes[current_box])
-
+    """return len visited"""
     return len(visited) == n

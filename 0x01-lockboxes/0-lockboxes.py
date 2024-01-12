@@ -1,5 +1,6 @@
 from collections import deque
 
+
 def canUnlockAll(boxes):
     n = len(boxes)
     visited = set()

@@ -19,4 +19,4 @@ def minOperations(n):
         current_length += clipboard
         operations += 1
 
-    return operations - 1
+    return operations

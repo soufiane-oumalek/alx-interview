@@ -5,18 +5,17 @@
 def minOperations(n):
     '''method that calculates the fewest number of operations'''
 
-    if not isinstance(n, int) or n <= 0:
+    if n < 2:
         return 0
 
     operations = 0
-    current_length = 1
-    clipboard = 0
+    r = 2
 
-    while current_length < n:
-        if n % current_length == 0:
-            clipboard = current_length
-            operations += 2
-        current_length += clipboard
-        operations += 1
+    for r in range(2, n + 1):
+        if n % r == 0:
+            operations += r
+            n //= r
+            r -= 1
+        r += 1
 
     return operations

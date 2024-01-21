@@ -11,7 +11,7 @@ def minOperations(n):
     operations = 0
     r = 2
 
-    for r in range(2, n + 1):
+    while r <= n:
         if n % r == 0:
             operations += r
             n //= r

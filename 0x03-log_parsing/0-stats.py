@@ -5,21 +5,21 @@
 import sys
 
 
-def print_msg(dict_sc, total_file_size):
+def read_stdin(to_dict, file_size):
     """
     reads stdin line by line and computes metrics:
     """
 
-    print("File size: {}".format(total_file_size))
-    for key, val in sorted(dict_sc.items()):
-        if val != 0:
-            print("{}: {}".format(key, val))
+    print("File size: {}".format(file_size))
+    for key, value in sorted(to_dict.items()):
+        if value != 0:
+            print("{}: {}".format(key, value))
 
 
-total_file_size = 0
+file_size = 0
 code = 0
 counter = 0
-dict_sc = {"200": 0,
+to_dict = {"200": 0,
            "301": 0,
            "400": 0,
            "401": 0,
@@ -30,26 +30,26 @@ dict_sc = {"200": 0,
 
 try:
     while True:
-        line = sys.stdin.readline()
-        if not line:
+        read_line = sys.stdin.readline()
+        if not read_line:
             break
 
-        parsed_line = line.split()  # trimming
+        parsed_line = read_line.split()  # trimming
         parsed_line = parsed_line[::-1]  # inverting
 
         if len(parsed_line) > 2:
             counter += 1
 
             if counter <= 10:
-                total_file_size += int(parsed_line[0])  # file size
+                file_size += int(parsed_line[0])  # file size
                 code = parsed_line[1]  # status code
 
-                if (code in dict_sc.keys()):
-                    dict_sc[code] += 1
+                if (code in to_dict.keys()):
+                    to_dict[code] += 1
 
             if (counter == 10):
-                print_msg(dict_sc, total_file_size)
+                read_stdin(to_dict, file_size)
                 counter = 0
 
 finally:
-    print_msg(dict_sc, total_file_size)
+    read_stdin(to_dict, file_size)

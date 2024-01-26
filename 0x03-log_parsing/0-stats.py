@@ -1,16 +1,13 @@
 #!/usr/bin/python3
+""" import module"""
+
 
 import sys
 
 
 def print_msg(dict_sc, total_file_size):
     """
-    Method to print
-    Args:
-        dict_sc: dict of status codes
-        total_file_size: total of the file
-    Returns:
-        Nothing
+    reads stdin line by line and computes metrics:
     """
 
     print("File size: {}".format(total_file_size))
@@ -40,7 +37,7 @@ try:
         parsed_line = line.split()  # trimming
         parsed_line = parsed_line[::-1]  # inverting
 
-        while len(parsed_line) > 2:
+        if len(parsed_line) > 2:
             counter += 1
 
             if counter <= 10:
@@ -53,7 +50,6 @@ try:
             if (counter == 10):
                 print_msg(dict_sc, total_file_size)
                 counter = 0
-                break
 
 finally:
     print_msg(dict_sc, total_file_size)

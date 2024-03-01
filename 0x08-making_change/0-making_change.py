@@ -18,7 +18,7 @@ def makeChange(coins, total):
 
         while curr_total <= total:
             dp[curr_total] = min(dp[curr_total], dp[curr_total - coin] + 1)
-            current_total += 1
+            curr_total += 1
 
         coin_index += 1
     return dp[total] if dp[total] != float('inf') else -1

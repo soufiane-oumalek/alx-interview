@@ -9,7 +9,7 @@ def isWinner(x, nums):
     if x < 1 or not nums:
         return None
     marias = 0
-    bens =  0
+    bens = 0
     num = max(nums)
     primes = [True for _ in range(1, num + 1, 1)]
     primes[0] = False
